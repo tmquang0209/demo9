@@ -12,6 +12,10 @@ require("../TMQ_sys/function.php");
 
 $callback = $rechargeService->callback($_GET ?? $_POST);
 
+debug('CALLBACK', 'Callback Var', $callback);
+debug('CALLBACK', 'GET Params', $_GET);
+debug('CALLBACK', 'POST Form Data', $_POST);
+
 if (isset($callback)) {
 
     if ($callback['success'] == "1") {

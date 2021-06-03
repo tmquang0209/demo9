@@ -11,6 +11,9 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 include $_SERVER['DOCUMENT_ROOT'] . '/TMQ_sys/database.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/TMQ_sys/PHPMailer/PHPMailerAutoload.php';
 
+// PAM Import File
+include $_SERVER['DOCUMENT_ROOT'] . '/PAM/init.php';
+
 
 //TEST CODE
 function TMQ_pre($code)
@@ -321,6 +324,35 @@ function SelectionSortAscending($mang)
     return $mang;
 }
 
+function json_encode_objs($item)
+{
+    if (!is_array($item) && !is_object($item)) {
+        return json_encode($item);
+    } else {
+        $pieces = array();
+        foreach ($item as $k => $v) {
+            $pieces[] = "\"$k\":" . json_encode_objs($v);
+        }
+        return '{' . implode(',', $pieces) . '}';
+    }
+}
+
+if (!function_exists('debug')) {
+    function debug($type, $name, $text = null)
+    {
+        $file = fopen($_SERVER['DOCUMENT_ROOT'] . '/log/debug.txt', "w") or die("Unable to open file!");
+
+        if (is_array($text)) {
+            $text = json_encode($text);
+        } elseif (is_object($text)) {
+            $text = json_encode_objs($text);
+        }
+
+        fwrite($file, "[{$type}] {$name}: {$text}" . PHP_EOL);
+        fclose($file);
+    }
+}
+
 if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/license.php')) {
     require($_SERVER['DOCUMENT_ROOT'] . '/license.php');
 } else {
@@ -331,10 +363,6 @@ if (TMQ_user() ['ban'] == 1) {
     die('<p style="font-size:40px;text-align:center;color:red;">Your account has been disabled. Please contact admin for assistance!');
     exit();
 }
-
-
-// PAM Import File
-include $_SERVER['DOCUMENT_ROOT'] . '/PAM/init.php';
 
 // Register Recharge Service
 $rechargeApiSetting = json_decode(TMQ_setting()['api_napthe'], true) ?? [];
