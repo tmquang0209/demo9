@@ -15,19 +15,19 @@ $callback = $rechargeService->callback($_GET ?? $_POST);
 if (isset($callback)) {
 
     if ($callback['success'] == "1") {
-        $get_the = $db->query("SELECT * FROM `TMQ_napthe` WHERE `tran_id` = '" . $callback['tranid'] . "' AND `mathe` = '" . $callback['pin'] . "'")->fetch();
+        $get_the = $db->query("SELECT * FROM `TMQ_napthe` WHERE `tran_id` = '" . $callback['data']['tranid'] . "' AND `mathe` = '" . $callback['data']['pin'] . "'")->fetch();
         // status = 1 ==> thẻ đúng + Cộng tiền cho khách bằng  $_GET['amount'] tại đây
         $congtien = $db->prepare("UPDATE `TMQ_user` SET `cash` = `cash` + ? WHERE `username` = ?");
         $congtien->execute(array(
-            $callback['amount'],
+            $callback['data']['amount'],
             $get_the['username']
         ));
 
         $update = $db->prepare("UPDATE `TMQ_napthe` SET `status` = ? WHERE `mathe` = ? AND `tran_id` = ?");
         $update->execute(array(
             'Thành công',
-            $callback['pin'],
-            $callback['tranid']
+            $callback['data']['pin'],
+            $callback['data']['tranid']
         ));
 
     } else {

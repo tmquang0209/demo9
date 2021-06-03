@@ -59,7 +59,7 @@ class CardVipService
                     'SeriCard' => $serial,
                     'IsFast' => true,
                     'RequestId' => $requestId,
-                    'UrlCallback' => 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}/profile/callback"
+                    'UrlCallback' => 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}/profile/callback.php"
                 ]
             ]);
             $data = json_decode($response->getBody()->getContents(), true);
