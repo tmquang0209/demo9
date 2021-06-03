@@ -49,6 +49,7 @@ class CardVipService
 
     public function send($networkCode, $amount, $code, $serial, $requestId): array
     {
+        debug('CARDVIP', 'Send Card', 'start');
         try {
             $response = $this->rechargeCard->setUrl('https://partner.cardvip.vn/api/')->sendRequest('POST', 'createExchange', [
                 'json' => [
@@ -63,8 +64,11 @@ class CardVipService
                 ]
             ]);
             $data = json_decode($response->getBody()->getContents(), true);
+            debug('CARDVIP', 'Send Card response', $data);
+            debug('CARDVIP', 'Send Card', 'end');
             return $this->handleStatusCode($data['status']);
         } catch (ClientExceptionInterface $e) {
+            debug('CARDVIP', 'Send errors', $e->getMessage());
             return [
                 'success' => false,
                 'message' => 'Hệ thống đã phát sinh lỗi vui lòng thử lại sau'
@@ -74,7 +78,16 @@ class CardVipService
 
     public function callback($GET): array
     {
+        debug('CARDVIP', 'Callback', $GET);
         if ($GET['status'] === 200) {
+            debug('CARDVIP', 'Callback Success', [
+                'success' => true,
+                'data' => [
+                    'tran_id' => $GET['requestid'],
+                    'pin' => $GET['card_code'],
+                    'amount' => $GET['value_receive'],
+                ]
+            ]);
             return [
                 'success' => true,
                 'data' => [
@@ -84,9 +97,11 @@ class CardVipService
                 ]
             ];
         } else {
+            debug('CARDVIP', 'Callback Error', [
+                'success' => false,
+            ]);
             return [
                 'success' => false,
-
             ];
         }
     }
