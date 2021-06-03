@@ -34,18 +34,18 @@ RewriteEngine on
   AddOutputFilterByType DEFLATE application/javascript
   AddOutputFilterByType DEFLATE application/x-javascript
   AddOutputFilterByType DEFLATE application/xml
-  AddOutputFilterByType DEFLATE application/xhtml+xml 
-  AddOutputFilterByType DEFLATE application/x-font  
-  AddOutputFilterByType DEFLATE application/x-font-truetype  
-  AddOutputFilterByType DEFLATE application/x-font-ttf  
-  AddOutputFilterByType DEFLATE application/x-font-otf 
-  AddOutputFilterByType DEFLATE application/x-font-opentype 
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/x-font
+  AddOutputFilterByType DEFLATE application/x-font-truetype
+  AddOutputFilterByType DEFLATE application/x-font-ttf
+  AddOutputFilterByType DEFLATE application/x-font-otf
+  AddOutputFilterByType DEFLATE application/x-font-opentype
   AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
-  AddOutputFilterByType DEFLATE font/ttf 
-  AddOutputFilterByType DEFLATE font/otf 
+  AddOutputFilterByType DEFLATE font/ttf
+  AddOutputFilterByType DEFLATE font/otf
   AddOutputFilterByType DEFLATE font/opentype
 # For Older Browsers Which Can't Handle Compression
-  BrowserMatch ^Mozilla/4 gzip-only-text/html 
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
   BrowserMatch ^Mozilla/4\.0[678] no-gzip
   BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
 </IfModule>
@@ -57,7 +57,7 @@ RewriteRule ^service/([a-zA-Z0-9_-]+)/([0-9]+).html$ view/wheel.php?id=$2
 RewriteRule ^([a-zA-Z0-9_-]+)-([0-9]+)-page=([0-9]+)$ /view/category.php?id=$2&page=$3
 RewriteRule ^([a-zA-Z0-9_-]+)-([0-9]+)$ /view/category.php?id=$2
 RewriteRule ^admin/([0-9a-z\-\_]+)-([0-9]+)$ admin/up_account.php?id=$2 [L]
-RewriteRule ^(([^/]+/)*[^.]+)$ /$1.php [L]
+RewriteRule ^(([^/]+/)*[^.]+)$ /$1.php [LQ]
 RewriteRule ^wheel/([0-9]+)$ /view/wheel.php?id=$1
 
 RewriteRule ^acc/([0-9]+) view/post.php?id=$1
