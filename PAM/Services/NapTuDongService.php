@@ -9,7 +9,7 @@ use Psr\Http\Client\ClientExceptionInterface;
 
 class NapTuDongService
 {
-    private RechargeCard $rechargeCard;
+    private $rechargeCard;
 
     public function __construct($rechargeCard)
     {

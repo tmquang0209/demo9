@@ -11,15 +11,15 @@ use Psr\Http\Client\ClientExceptionInterface;
 
 class RechargeCard
 {
-    private Client $client;
+    private $client;
 
-    private array $clientConfig;
+    private $clientConfig;
 
-    private string $service;
+    private $service;
 
-    private string $url = '';
+    private $url = '';
 
-    private array $api = [
+    private $api = [
         'id' => null,
         'key' => null
     ];
