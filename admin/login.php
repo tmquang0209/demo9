@@ -16,7 +16,7 @@ if($_SESSION['admin']) header("Location: /admin/main");
 if(isset($_POST['login'])){
     $password = TMQ_check($_POST['password']);
     $password = TMQ_mahoa($password);
-    
+
     if(!$password){
         $err = "Vui lòng nhập đủ thông tin.";
     }elseif($password != TMQ_user()['password_2']){
@@ -63,14 +63,14 @@ if(isset($_POST['login'])){
                   </div>
                   <div class="form-group d-flex align-items-center justify-content-between">
                     <div class="form-check">
-                      
+
                     </div>
                     <a onclick="alert('Liên hệ admin để lấy lại password')" class="forgot-pass">Forgot password</a>
                   </div>
                   <div class="text-center">
                     <button name="login" type="submit" class="btn btn-primary btn-block enter-btn">Login</button>
                   </div>
-                 
+
                 </form>
               </div>
             </div>
