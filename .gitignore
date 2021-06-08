@@ -2,3 +2,6 @@
 TMQ_sys/database.php
 PAM/composer.lock
 PAM/composer.json
+
+upload/**/*
+!upload/**/index.php

@@ -69,12 +69,22 @@ $subcategory = isset($_GET['sub']) ? (int)$_GET['sub'] : 0;
             ';
         }
         if (isset($_POST['edit'])) {
-            $get = $db->query("SELECT `name`,`id_cmm`, `notification` FROM `TMQ_chuyenmuc` WHERE `id` = '" . TMQ_check($_POST['edit']) . "'")->fetch();
+            $get = $db->query("SELECT `name`,`id_cmm`, `notification`, `random` FROM `TMQ_chuyenmuc` WHERE `id` = '" . TMQ_check($_POST['edit']) . "'")->fetch();
             if (isset($_POST['confirm'])) {
+                if ($_FILES['image']) {
+                    $imageUpload = upload_file('categories', $_FILES['image']);
+                } else {
+                    $imageUpload = [
+                        'success' => false,
+                        'file_name' => 'https://demo9.tmquang.monster/images/no_image.png'
+                    ];
+                }
+
                 $name = TMQ_check($_POST['name']);
+                $random = TMQ_check($_POST['random']);
                 $id = (int)$_POST['edit'];
                 $back_url = TMQ_check($_POST['back_url']);
-                $db->exec("UPDATE `TMQ_chuyenmuc` SET `name` = " . $db->quote($name) . ", `notification` = " . $db->quote($_POST['notification']) . " WHERE `id` = '$id'");
+                $db->exec("UPDATE `TMQ_chuyenmuc` SET `name` = " . $db->quote($name) . ", `image` = '" . $imageUpload['file_name'] . "', `random` = '" . isset($random) . "', `notification` = " . $db->quote($_POST['notification']) . " WHERE `id` = '$id'");
                 header("Location: $back_url");
             }
             ?>
@@ -89,9 +99,17 @@ $subcategory = isset($_GET['sub']) ? (int)$_GET['sub'] : 0;
                                     <input type="text" class="form-control" placeholder="Category name" name="name"
                                            value="<?= $get['name']; ?>">
                                 </div>
+
                                 <div class="form-group">
-                                    <label>Loại</label>
-                                    <select class="js-example-basic-single" style="width:100%" name="species">
+                                    <label for="image">Hình ảnh</label>
+                                    <input type="file" class="form-control" placeholder="Image name" name="image"
+                                           id="image">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="category">Loại</label>
+                                    <select id="category" class="js-example-basic-single" style="width:100%"
+                                            name="species">
                                         <option value="0" <?php if ($subcategory == 0) {
                                             echo 'selected';
                                         } ?>>Chuyên mục mẹ
@@ -111,6 +129,12 @@ $subcategory = isset($_GET['sub']) ? (int)$_GET['sub'] : 0;
                                     <textarea class="form-control" name="notification" id="notification" cols="30"
                                               rows="10"><?= $get['notification']; ?></textarea>
                                 </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" name="random" type="checkbox" value="1"
+                                           id="isRandom" <?= (bool)$get['random'] ? 'checked' : null ?>>
+                                    <label class="form-check-label" for="isRandom">Random</label>
+                                </div>
+
                                 <input type="hidden" name="back_url" value="<?= $_SERVER['REQUEST_URI']; ?>"/>
                                 <input type="hidden" name="edit" value="<?= (int)$_POST['edit']; ?>"/>
                                 <button type="submit" name="confirm" class="btn btn-primary mr-2">Sửa</button>
@@ -126,6 +150,7 @@ $subcategory = isset($_GET['sub']) ? (int)$_GET['sub'] : 0;
         if (isset($_GET['add'])) {
             if (isset($_POST['add'])) {
                 $name = TMQ_check($_POST['name']);
+                $random = $_POST['random'];
                 $species = (int)$_POST['species'];
                 $img = TMQ_check($_FILES['image']);
 
@@ -143,12 +168,20 @@ $subcategory = isset($_GET['sub']) ? (int)$_GET['sub'] : 0;
                     ];
                 }
                 if (!empty($name)) {
+                    $insert = $db->prepare("INSERT INTO `TMQ_chuyenmuc` (name, image, notification, loai, id_cmm, status, random, date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
-                    $db->exec("INSERT INTO `TMQ_chuyenmuc`
-            (`name`, `image`, `notification`, `loai`, `id_cmm`, `status`, `date`)
-            VALUES
-            (" . $db->quote($name) . "," . $db->quote($imageUpload['file_name']) . "," . $db->quote($_POST['notification']) . "," . $db->quote($loai) . "," . $db->quote($species) . ",'on','" . date("d-m-Y") . "')
-            ");
+                    $insert->execute(array(
+                        $name,
+                        $imageUpload['file_name'],
+                        $_POST['notification'],
+                        $loai,
+                        $species,
+                        'on',
+                        isset($random) ? 1 : 0,
+                        date("d-m-Y")
+                    ));
+
+
                     header('Location: /admin/category');
                 }
             }
@@ -183,6 +216,11 @@ $subcategory = isset($_GET['sub']) ? (int)$_GET['sub'] : 0;
                                     <label for="notification">Thông báo </label>
                                     <textarea class="form-control" name="notification" id="notification" cols="30"
                                               rows="10"></textarea>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" name="random" type="checkbox" value="1"
+                                           id="isRandom">
+                                    <label class="form-check-label" for="isRandom">Random</label>
                                 </div>
                                 <button type="submit" name="add" class="btn btn-primary mr-2">Tạo</button>
                             </form>
