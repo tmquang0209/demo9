@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  pamserver:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    container_name: pam_server
+    working_dir: /var/www/html
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx_log:/var/log/nginx
+      - ./docker/php-fpm/php-fpm.log:/var/log/php-fpm.log
+      - ./docker/config/app.conf:/etc/nginx/conf.d/app.conf
+    links:
+      - mysql
+  mysql:
+    image: mysql:8
+    container_name: pam_mysql
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./docker/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "0123456789"
+      MYSQL_DATABASE: "demo9"

@@ -1,0 +1,78 @@
+[10-Jun-2021 12:19:57] NOTICE: fpm is running, pid 17
+[10-Jun-2021 12:19:57] NOTICE: ready to handle connections
+[10-Jun-2021 12:19:57] NOTICE: systemd monitor interval set to 10000ms
+[10-Jun-2021 12:21:34] NOTICE: fpm is running, pid 17
+[10-Jun-2021 12:21:34] NOTICE: ready to handle connections
+[10-Jun-2021 12:21:34] NOTICE: systemd monitor interval set to 10000ms
+[10-Jun-2021 12:23:07] NOTICE: fpm is running, pid 17
+[10-Jun-2021 12:23:07] NOTICE: ready to handle connections
+[10-Jun-2021 12:23:07] NOTICE: systemd monitor interval set to 10000ms
+[10-Jun-2021 12:28:21] NOTICE: fpm is running, pid 17
+[10-Jun-2021 12:28:21] NOTICE: ready to handle connections
+[10-Jun-2021 12:28:21] NOTICE: systemd monitor interval set to 10000ms
+[10-Jun-2021 12:29:05] NOTICE: fpm is running, pid 17
+[10-Jun-2021 12:29:05] NOTICE: ready to handle connections
+[10-Jun-2021 12:29:05] NOTICE: systemd monitor interval set to 10000ms
+[10-Jun-2021 12:30:02] NOTICE: fpm is running, pid 17
+[10-Jun-2021 12:30:02] NOTICE: ready to handle connections
+[10-Jun-2021 12:30:02] NOTICE: systemd monitor interval set to 10000ms
+[10-Jun-2021 12:30:37] NOTICE: fpm is running, pid 17
+[10-Jun-2021 12:30:37] NOTICE: ready to handle connections
+[10-Jun-2021 12:30:37] NOTICE: systemd monitor interval set to 10000ms
+[10-Jun-2021 12:31:30] NOTICE: fpm is running, pid 17
+[10-Jun-2021 12:31:30] NOTICE: ready to handle connections
+[10-Jun-2021 12:31:30] NOTICE: systemd monitor interval set to 10000ms
+[10-Jun-2021 12:31:58] NOTICE: fpm is running, pid 17
+[10-Jun-2021 12:31:58] NOTICE: ready to handle connections
+[10-Jun-2021 12:31:58] NOTICE: systemd monitor interval set to 10000ms
+[10-Jun-2021 12:36:04] NOTICE: fpm is running, pid 17
+[10-Jun-2021 12:36:04] NOTICE: ready to handle connections
+[10-Jun-2021 12:36:04] NOTICE: systemd monitor interval set to 10000ms
+[10-Jun-2021 12:38:33] NOTICE: fpm is running, pid 17
+[10-Jun-2021 12:38:33] NOTICE: ready to handle connections
+[10-Jun-2021 12:38:33] NOTICE: systemd monitor interval set to 10000ms
+[10-Jun-2021 12:39:41] NOTICE: fpm is running, pid 17
+[10-Jun-2021 12:39:41] NOTICE: ready to handle connections
+[10-Jun-2021 12:39:41] NOTICE: systemd monitor interval set to 10000ms
+[10-Jun-2021 12:40:56] WARNING: [pool www] child 27 said into stderr: "NOTICE: PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function TMQ_baotri() in /var/www/html/index.php:15"
+[10-Jun-2021 12:40:56] WARNING: [pool www] child 27 said into stderr: "Stack trace:"
+[10-Jun-2021 12:40:56] WARNING: [pool www] child 27 said into stderr: "#0 {main}"
+[10-Jun-2021 12:40:56] WARNING: [pool www] child 27 said into stderr: "  thrown in /var/www/html/index.php on line 15"
+[10-Jun-2021 12:40:56] WARNING: [pool www] child 28 said into stderr: "NOTICE: PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function TMQ_baotri() in /var/www/html/index.php:15"
+[10-Jun-2021 12:40:56] WARNING: [pool www] child 28 said into stderr: "Stack trace:"
+[10-Jun-2021 12:40:56] WARNING: [pool www] child 28 said into stderr: "#0 {main}"
+[10-Jun-2021 12:40:56] WARNING: [pool www] child 28 said into stderr: "  thrown in /var/www/html/index.php on line 15"
+[10-Jun-2021 12:46:26] NOTICE: fpm is running, pid 17
+[10-Jun-2021 12:46:26] NOTICE: ready to handle connections
+[10-Jun-2021 12:46:26] NOTICE: systemd monitor interval set to 10000ms
+[10-Jun-2021 12:48:21] NOTICE: fpm is running, pid 17
+[10-Jun-2021 12:48:21] NOTICE: ready to handle connections
+[10-Jun-2021 12:48:21] NOTICE: systemd monitor interval set to 10000ms
+[10-Jun-2021 12:54:26] WARNING: [pool www] child 28 said into stderr: "NOTICE: PHP message: PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /var/www/html/license.php:16"
+[10-Jun-2021 12:54:26] WARNING: [pool www] child 28 said into stderr: "Stack trace:"
+[10-Jun-2021 12:54:26] WARNING: [pool www] child 28 said into stderr: "#0 /var/www/html/license.php(85): license->get()"
+[10-Jun-2021 12:54:26] WARNING: [pool www] child 28 said into stderr: "#1 /var/www/html/index.php(19): require('/var/www/html/l...')"
+[10-Jun-2021 12:54:26] WARNING: [pool www] child 28 said into stderr: "#2 {main}"
+[10-Jun-2021 12:54:26] WARNING: [pool www] child 28 said into stderr: "  thrown in /var/www/html/license.php on line 16"
+[10-Jun-2021 12:54:26] WARNING: [pool www] child 29 said into stderr: "NOTICE: PHP message: PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /var/www/html/license.php:16"
+[10-Jun-2021 12:54:26] WARNING: [pool www] child 29 said into stderr: "Stack trace:"
+[10-Jun-2021 12:54:26] WARNING: [pool www] child 29 said into stderr: "#0 /var/www/html/license.php(85): license->get()"
+[10-Jun-2021 12:54:26] WARNING: [pool www] child 29 said into stderr: "#1 /var/www/html/index.php(19): require('/var/www/html/l...')"
+[10-Jun-2021 12:54:26] WARNING: [pool www] child 29 said into stderr: "#2 {main}"
+[10-Jun-2021 12:54:26] WARNING: [pool www] child 29 said into stderr: "  thrown in /var/www/html/license.php on line 16"
+[10-Jun-2021 12:56:20] WARNING: [pool www] child 28 said into stderr: "NOTICE: PHP message: PHP Notice:  Undefined variable: _SESSION in /var/www/html/TMQ_sys/function.php on line 112"
+[10-Jun-2021 12:56:20] WARNING: [pool www] child 28 said into stderr: "NOTICE: PHP message: PHP Notice:  Trying to access array offset on value of type null in /var/www/html/TMQ_sys/function.php on line 112"
+[10-Jun-2021 12:56:20] WARNING: [pool www] child 28 said into stderr: "NOTICE: PHP message: PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /var/www/html/TMQ_sys/function.php:114"
+[10-Jun-2021 12:56:20] WARNING: [pool www] child 28 said into stderr: "Stack trace:"
+[10-Jun-2021 12:56:20] WARNING: [pool www] child 28 said into stderr: "#0 /var/www/html/TMQ_sys/function.php(330): TMQ_user()"
+[10-Jun-2021 12:56:20] WARNING: [pool www] child 28 said into stderr: "#1 /var/www/html/index.php(14): require('/var/www/html/T...')"
+[10-Jun-2021 12:56:20] WARNING: [pool www] child 28 said into stderr: "#2 {main}"
+[10-Jun-2021 12:56:20] WARNING: [pool www] child 28 said into stderr: "  thrown in /var/www/html/TMQ_sys/function.php on line 114"
+[10-Jun-2021 12:56:20] WARNING: [pool www] child 29 said into stderr: "NOTICE: PHP message: PHP Notice:  Undefined variable: _SESSION in /var/www/html/TMQ_sys/function.php on line 112"
+[10-Jun-2021 12:56:20] WARNING: [pool www] child 29 said into stderr: "NOTICE: PHP message: PHP Notice:  Trying to access array offset on value of type null in /var/www/html/TMQ_sys/function.php on line 112"
+[10-Jun-2021 12:56:20] WARNING: [pool www] child 29 said into stderr: "NOTICE: PHP message: PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /var/www/html/TMQ_sys/function.php:114"
+[10-Jun-2021 12:56:20] WARNING: [pool www] child 29 said into stderr: "Stack trace:"
+[10-Jun-2021 12:56:20] WARNING: [pool www] child 29 said into stderr: "#0 /var/www/html/TMQ_sys/function.php(330): TMQ_user()"
+[10-Jun-2021 12:56:20] WARNING: [pool www] child 29 said into stderr: "#1 /var/www/html/index.php(14): require('/var/www/html/T...')"
+[10-Jun-2021 12:56:20] WARNING: [pool www] child 29 said into stderr: "#2 {main}"
+[10-Jun-2021 12:56:20] WARNING: [pool www] child 29 said into stderr: "  thrown in /var/www/html/TMQ_sys/function.php on line 114"
